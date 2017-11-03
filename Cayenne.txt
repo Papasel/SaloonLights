@@ -7,7 +7,7 @@
 #define VIRTUAL_HUMI V1
 DHT dht(DHT11_PIN, DHTTYPE);
 
-char token[] = "1opngmwzt0";
+char token[] = "Auth code";
 
 void setup()
 {
