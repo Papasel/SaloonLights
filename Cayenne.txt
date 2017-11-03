@@ -11,17 +11,17 @@ char token[] = "Auth code";
 
 void setup()
 {
-	Serial.begin(9600);
-	Cayenne.begin(token);
-  dht.begin();
+Serial.begin(9600);
+Cayenne.begin(token);
+dht.begin();
 }
 
 void loop()
 {
-  delay(200);
-	Cayenne.run();
-  float h = dht.readHumidity();
-  float c = dht.readTemperature(); 
-  Cayenne.virtualWrite(VIRTUAL_HUMI, h);
-  Cayenne.virtualWrite(VIRTUAL_TEMP, c);
+delay(200);
+Cayenne.run();
+float h = dht.readHumidity();
+float c = dht.readTemperature(); 
+Cayenne.virtualWrite(VIRTUAL_HUMI, h);
+Cayenne.virtualWrite(VIRTUAL_TEMP, c);
 }
