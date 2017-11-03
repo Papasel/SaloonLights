@@ -1,0 +1,27 @@
+#include <CayenneEthernet.h>
+#include <DHT.h>
+
+#define DHTTYPE DHT11
+#define DHT11_PIN 3
+#define VIRTUAL_TEMP V2
+#define VIRTUAL_HUMI V1
+DHT dht(DHT11_PIN, DHTTYPE);
+
+char token[] = "1opngmwzt0";
+
+void setup()
+{
+	Serial.begin(9600);
+	Cayenne.begin(token);
+  dht.begin();
+}
+
+void loop()
+{
+  delay(200);
+	Cayenne.run();
+  float h = dht.readHumidity();
+  float c = dht.readTemperature(); 
+  Cayenne.virtualWrite(VIRTUAL_HUMI, h);
+  Cayenne.virtualWrite(VIRTUAL_TEMP, c);
+}
